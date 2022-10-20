@@ -1,0 +1,58 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% include 'layout/scripts.html' %}{% include 'layout/navbar.html' %}
+{% block profile %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Detalle de Perfil</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header">
+    <div class="card card-solid">
+      <div class="card-body col-12">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+            <div class="card bg-light d-flex flex-fill">
+              <div class="card-header text-muted border-bottom-0">
+                {{user.user_corp}}
+              </div>
+            <div class="card-body pt-0">
+                    <div class="row">
+                      <div class="col-12">
+                        <h2 class="lead"><b>{{user.user_name}} {{ user.user_last_name }}</b></h2>
+                        <p class="text-muted text-sm"><b>Cargo: </b> {{ user.deparment_site }} </p>
+                        <p class="text-muted text-sm"><b>Cargo: </b> {{ user.user_status }} </p>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> {{user.user_email}}</li>
+                        </ul>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <section class="content">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title"></h3>
+                      <a class="btn btn-danger" href="{% url 'users:users' %}">Volver a Colaboradores</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>  
+{% endblock %}
+        

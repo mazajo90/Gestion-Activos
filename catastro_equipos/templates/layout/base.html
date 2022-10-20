@@ -1,0 +1,219 @@
+{% load static %}{% include 'layout/navbar.html' %}{% include 'layout/scripts.html'%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Admin | BCN{% endblock %}</title>
+
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+ 
+  
+</head>
+  <body class="hold-transition sidebar-mini">
+<div class="wrapper">
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{% url 'home' %}" class="brand-link">
+    <img src="{% static 'core/img/AdminLTELogo.png' %}" width="50px" height="50px" alt="img"> 
+    <span class="brand-text font-weight-light">Gestion de Activos</span>
+  </a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{% static 'admin/img/perfil.png' %}" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="" class="d-block">{{user.first_name}} {{user.last_name}}</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item menu-open">
+          <a href="" class="nav-link active">
+            <i class="nav-icon fab fa-product-hunt"></i>
+            <p>
+              Notebooks
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'products:products' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Listado de Notebooks</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="" class="nav-link active">
+            <i class="nav-icon fab fa-product-hunt"></i>
+            <p>
+              Teléfonos
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'phones:phones' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Listado de Teléfonos</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-laptop"></i>
+            <p>
+              Asignación Notebooks
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'asignation:list' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Notebooks Asignados </p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'products:list_ware' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Notebooks para Asignar</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'asignation:history' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Historial Notebooks</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fab fa-product-hunt"></i>
+            <p>
+              Pantallas
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'accesorios:accesorios-list' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Listado de Pantallas</p>
+              </a>
+            </li>
+          </ul>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-desktop"></i>
+              <p>
+                Asignación de Pantallas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'accesorios:asignacion-list' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pantallas Asignadas</p>
+              </a>
+            </li>
+        </li>
+      </ul>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{% url 'accesorios:list_ware' %}" class="nav-link active">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Pantallas por Asignar</p>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{% url 'accesorios:history' %}" class="nav-link active">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Historial Pantallas</p>
+          </a>
+        </li>
+      </ul>
+      <li class="nav-item menu-open">
+        <a href="" class="nav-link active">
+          <i class="nav-icon fas fa-user-plus"></i>
+          <p>
+            Colaboradores
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'users:users' %}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Listado</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+    </nav>
+  </div>
+</aside>
+<aside class="control-sidebar control-sidebar-dark">
+</aside>
+            {% block content %}{% endblock %}
+            {% block container %}{% endblock %}
+            {% block update %}{% endblock %}
+            {% block create %}{% endblock %}
+            {% block detail %}{% endblock %}
+            {% block delete %}{% endblock %}
+            {% block check_list %}{% endblock %}
+            {% block users %}{% endblock %}
+            {% block profile%}{% endblock %}
+            {% block userCreate %}{% endblock %}
+            {% block updateusers %}{% endblock %}
+            {% block userDelete %}{% endblock %}
+            {% block asig %}{% endblock %}
+            {% block deleteasig %}{% endblock %}
+            {% block listAsig %}{% endblock %}
+            {% block templateEmail %}{% endblock %}
+            {% block listWare %}{% endblock %}
+            {% block pantalla %}{% endblock %}
+            {% block phone %}{% endblock %}
+          </div>
+          
+          {% include 'layout/footer.html' %}
+        <div class="text-center">
+            {% if messages %}
+              {% for m in messages %}
+            <script>
+                Swal.fire({
+                  "title" : "Perfecto",
+                  "text" : "{{ m }}",
+                  "icon" : "success",
+                  "color": "#fff",
+                  "background": "#4b4b4b",
+                  "backdrop": true,
+                  "timer":3000,
+                  "timerProgressBar": true
+                });
+            </script>
+
+            {% endfor %}
+          {% endif %}
+        </div>
+  </body>
+</html>
+

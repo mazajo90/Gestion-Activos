@@ -1,0 +1,198 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+<title>{% block title %}Equipos{% endblock %}</title>
+{% include 'layout/scripts.html' %}
+{% block check_list %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Detalle del Activo</h1>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                  </ol>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+    <div class="card shadow mb-4">
+        <br> 
+        
+        <section class="content"> 
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        
+                    <h3 class="card-title">Equipo - {{product.product_name}}</h3>
+                    </div>
+                   
+            <div class="card-body">
+            <table class="table table-bordered center">
+            <thead> 
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Activo</th>
+                    <th>Caracteristicas</th>
+                </tr>
+            </thead>
+            <tbody> 
+                    <tr>
+                    <td>1.</td>
+                    <td>Marca producto</td>
+                    <td>
+                        {{ product.product_name}}
+                    </td>
+                    
+                    </tr>
+                    <tr>
+                    <td>2.</td>
+                    <td>Tipo de Producto</td>
+                    <td>
+                        {{ product.type_product}}
+                    </td>
+                    
+                    </tr>
+                    <tr>
+                    <td>3.</td>
+                    <td>Modelo</td>
+                    <td>
+                        {{ product.model_product }}
+                    </td>
+                    
+                    </tr>
+                    <tr>
+                    <td>4.</td>
+                    <td>Dirección Mac</td>
+                    <td>
+                        {{ product.mac_address}}
+                        </td>
+                        
+                        </tr>
+                    <tr>
+                    <td>5.</td>
+                    <td>Tipo de Serial</td>
+                    <td>
+                        {{ product.type_serial }}
+                    </td>
+                  
+                    </tr>
+                    <td>6.</td>
+                    <td>Ram instalada</td>
+                    <td>
+                        {{ product.ram_pc }}
+                    </td>
+                  
+                    </tr>
+                    <td>7.</td>
+                    <td>Tipo de Ram</td>
+                    <td>
+                        {{ product.ram_pc_type }}
+                    </td>
+                  
+                    </tr>
+                    <td>8.</td>
+                    <td>Capacidad de Disco Duro</td>
+                    <td>
+                        {{ product.disk_pc }}
+                    </td>
+                   
+                    </tr>
+                    <td>9.</td>
+                    <td>Tipo de Disco</td>
+                    <td>
+                    {{product.disk_pc_type}}
+                    </td>
+                   
+                    </tr>    
+                    <td>10.</td>
+                    <td>Modelo de Disco</td>
+                    <td>
+                        {{ product.disk_pc_model }}
+                    </td>
+
+                    </tr>    
+                    <td>11.</td>
+                    <td>Tipo de Procesador</td>
+                    <td>
+                        {{ product.processor }}
+                    </td>
+                   
+                    </tr>    
+                    <td>12.</td>
+                    <td>Modelo de Procesador</td>
+                    <td>
+                        {{ product.processor_model }}
+                    </td>
+
+                    </tr>    
+                    <td>13.</td>
+                    <td>Serial del Producto</td>
+                    <td>
+                        {{ product.serial }}
+                    </td>
+                  
+                    </tr>    
+                    <td>14.</td>
+                    <td>Codigo Activo</td>
+                    <td>
+                        {{ product.active_code }}
+                    </td>
+              
+                    </tr>    
+                    <td>15.</td>
+                    <td>Estado del Equipo</td>
+                    <td>
+                        {{ product.product_status }}
+                    </td>
+                    <tr>
+                    <td>16.</td>
+                    <td>Fecha de Compra</td>
+                    <td>
+                        {{ product.buy_product}}
+                    </td>
+                    
+                    </tr>
+                    </tr>    
+                    <td>17.</td>
+                    <td>Fecha de creación</td>
+                    <td>
+                        {{ product.created }}
+                    </td>
+              
+                   </tr>    
+                    <td>18.</td>
+                    <td>Cantidad</td>
+                    <td>
+                        {{ product.product_quantity }}
+                    </td>
+
+                    </tr>    
+                    <td>19.</td>
+                    <td>Bodega</td>
+                    <td>
+                        {{ product.warehouse }}
+                    </td>
+                    
+                </tbody>
+                </table>
+            </div>
+        </section>
+            <br> 
+    <div class="card-body">
+        <div class="container">
+            <div class="row row-cols">
+                
+            </div>
+            
+            </div>
+            <div>
+            <a class="btn btn-outline-dark" href="{% url 'products:products' %}">Volver</a>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

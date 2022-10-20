@@ -1,0 +1,128 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+<title>{% block title %}Equipos{% endblock %}</title>
+{% include 'layout/scripts.html' %}
+{% block listAsig %}
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Detalle del Activo</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<div class="card shadow mb-4">
+    <br> 
+    
+    <section class="content"> 
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    
+                <h3 class="card-title">Equipo o Producto Asignado a: <strong>{{asignation.user}}</strong></h3>
+                </div>
+               
+        <div class="card-body">
+        <table class="table table-bordered center">
+        <thead> 
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Activo</th>
+                <th>Caracteristicas</th>
+            </tr>
+        </thead>
+        <tbody> 
+                <tr>
+                <td>1.</td>
+                <td>ID de Asignacion</td>
+                <td>
+                    {{ asignation.asig_id}}
+                </td>
+                
+                </tr>
+                <tr>
+                <td>2.</td>
+                <td>Producto</td>
+                <td>
+                    {{ asignation.product.product_name}}
+                </td>
+                
+                </tr>
+                <tr>
+                <td>3.</td>
+                <td>Modelo</td>
+                <td>
+                    {{ asignation.product.model_product }}
+                </td>
+                </tr>
+                <tr>
+                <td>4.</td>
+                <td>Serial</td>
+                <td>
+                    {{ asignation.product.serial }}
+                </td>
+
+                </tr>
+                <tr>
+                <td>5.</td>
+                <td>Departamento a Cargo</td>
+                <td>
+                    {{ asignation.dp_boss}}
+                    </td>
+                    
+                    </tr>
+                <tr>
+                <td>6.</td>
+                <td>Autorizado por</td>
+                <td>
+                    {{ asignation.boss }}
+                </td>
+              
+                </tr>
+                <td>7.</td>
+                <td>Fecha</td>
+                <td>
+                    {{ asignation.date }}
+                </td>
+                     
+                </tr>
+                <td>8.</td>
+                <td>Comentario</td>
+                <td>
+                    {{ asignation.acta_ent|safe }}
+                </td>
+
+               </tr>    
+                <td>9.</td>
+                <td>Cantidad</td>
+                <td>
+                    {{ asignation.product.product_quantity }}
+                </td>
+                
+            </tbody>
+            </table>
+        </div>
+    </section>
+        <br> 
+<div class="card-body">
+    <div class="container">
+        <div class="row row-cols">
+            
+        </div>
+        
+        </div>
+        <div>
+        <a class="btn btn-outline-dark" href="{% url 'asignation:list' %}">Volver</a>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

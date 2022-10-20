@@ -1,0 +1,75 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% block title %}Listado{% endblock %}{% include 'layout/scripts.html' %}{% include 'layout/navbar.html'%}
+{% block listWare %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-3">
+          <div class="col-sm-6">
+            <h1>Historial</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>  
+      
+      {% include 'asignacion/search.html' %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Historial de Equipos o Productos Asignados</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID de Asignación</th>
+                        <th>Producto</th>
+                        <th>Colaborador</th>
+                        <th>Fecha de Entrega</th>
+                        <th>Fecha de Retiro</th>
+                        <th>Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if object_list %}
+                  {% for asignation in object_list|dictsort:"pk" reversed %} 
+                      <tr class="text-center">
+                        <td>{{ asignation.asig_id }}</td>
+                        <td>{{ asignation.product.product_name }}</td>
+                        <td>{{ asignation.user}}</td>
+                        <td>{{ asignation.date_init }}</td>
+                        <td>{{ asignation.date_fin  }}</td>
+                        <td>
+                          <div class="text-center">
+                            <a class="btn btn-info" href="{% url 'asignation:historial' asignation.pk %}"><i class="fa fa-plus-square"></i></a>
+                          </div>
+                        </td>  
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                        <div class="text-center">
+                        <h1>No existe Historial</h1>
+                    </div>
+                    {% endif %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'layout/paginate.html' %}
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

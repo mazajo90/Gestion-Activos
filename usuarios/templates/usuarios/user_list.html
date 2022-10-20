@@ -1,0 +1,91 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% load usuarios_extra %}{% get_up_and_del %}{% include 'layout/scripts.html' %}{% include 'layout/navbar.html'%}  
+{% block users %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Lista de Colaboradores</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    {% include 'usuarios/search.html' %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Colaboradores de BCN School</h3>
+            </div>
+            <!-- /.card-header -->
+            <br>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="table table-bordered-dark" id="example2" width="100%" cellspacing="0" class="table table-bordered table-hover">
+                  <thead>
+                    <tr class="text-center">
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Correo</th>
+                      <th>Inicio</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if object_list %}
+                            {% for user in object_list|dictsort:"date" reversed %}
+                            <tr class="text-center">
+                              <td>{{ user.user_name }}</td>
+                              <td>{{ user.user_last_name }}</td>
+                              <td>{{ user.user_email }}</td>
+                              <td>{{ user.date }}</td>
+                              <td>
+                                
+                                  <a class="btn btn-primary" href="{% url 'users:update' user.pk %}"><i class="fa fa-pen"></i></a>
+                                  <a class="btn btn-danger" href="{% url 'users:delete' user.pk %}"><i class="fa fa-trash"></i></a>
+                                  
+                                  <a class="btn btn-info" href="{% url 'users:profile' user.pk %}"><i class="fa fa-plus-square"></i></a>    
+                              </td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <div class="text-center">
+                            <h1>No hay Colaboradores registrados</h1>
+                            </div>
+                            {% endif %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="text-center">
+                        <a class="btn btn-danger" href="{% url 'home' %}">Volver</a>
+                        {% if user.is_active and user.is_staff and user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'users:create' %}">Crear Colaborador</a>
+                        {% endif %}
+                      </div>
+                      
+                    </div>
+                   {% include 'layout/paginate.html' %}
+              
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    
+    <!-- /.content -->
+  </div>
+  
+  {% endblock %}

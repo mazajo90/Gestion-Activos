@@ -1,0 +1,13 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% block title %}Inicio{% endblock %}{% include 'layout/scripts.html'%}
+
+{% block container %}
+<div class="content-header">
+  <div class="container-fluid"></div>
+<div class="content-wrapper">
+
+  <div class="image text-center">
+    <img src="{% static 'core/img/home.jpg' %}" width="100%" height=auto class="responsive">
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% block title %}Listado{% endblock %}{% include 'layout/scripts.html' %}{% include 'layout/navbar.html'%}
+{% block listWare %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-3">
+          <div class="col-sm-6">
+            <h1>Pantallas o Monitores Disponibles</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>  
+     {% include 'accesorios/search_display.html' %} 
+     
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Productos Disponibles</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Tamaño</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Codigo Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if object_list %}
+                  {% for displaypc in object_list|dictsort:"pk" reversed %} 
+                      <tr class="text-center">
+                        <td>{{ displaypc.id_product  }}</td>
+                        <td>{{ displaypc.display_name  }}</td>
+                        <td>{{ displaypc.display_model}}</td>
+                        <td>{{ displaypc.display_size }}</td>
+                        <td>{{ displaypc.display_tech  }}</td>
+                        <td>{{ displaypc.product_status }}</td>
+                        <td>{{ displaypc.active_code }}</td>
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                        <div class="text-center">
+                        <h1>No existen Productos registrados en Bodega</h1>
+                    </div>
+                    {% endif %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'layout/paginate.html' %}
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

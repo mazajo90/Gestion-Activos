@@ -1,0 +1,18 @@
+{% load static %}
+<div class="mb-5 form-inline">
+    <form action="{% url 'asignation:search/historial' %}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" class="form-control bg-light border-0 small" type="search" autocomplete="on" maxlength="100" placeholder="Buscar..." name="q" value={{ query }}>
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+          <div class="container text-center">
+            <p>
+              Resultados para la busqueda: {{ query }} ({{count}})
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>

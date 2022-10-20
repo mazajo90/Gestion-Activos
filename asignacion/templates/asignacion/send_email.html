@@ -1,0 +1,39 @@
+ <html>
+     <body>
+                         <h2>
+                    Mensaje de Alerta - No Contestar
+                        </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <h3>
+                        <span class="font-noraml">Asignación N°: </span>{{self.asig_id|safe}}
+                    </h3>
+                    <h5>
+                        <span class="pull-right font-noraml"><strong>{{self.date}}</strong></span>
+                    </h5>
+                </div>
+                <div class="mail-body">
+                    <p>
+                        Hola Equipo de Activos BCN!
+                        <br/>
+                        <br/>
+                        Queremos avisarte que se acaba de asignar un Notebook a un colaborador.
+                        </p>
+                    <p>
+                        Informamos que la Asignación N°: <strong>{{self.asig_id|safe}}</strong> fué registrada con exito.
+                        Para mayor Información contactar al Administrador Principal.
+                    </p>
+                    <p style="color: red">
+                        Estas aprobaciones son verificadas con anterioridad por el Departamento correspondiente antes de la asignación.
+                    </p>
+                </div>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+              <a href="https://www.instagram.com/bcnschool_group/" target="_blank" class="fab fa-instagram tooltipped" title="Instagram"></a>
+            </div>
+            <strong>Derechos reservados &copy; 2022 <a href="https://bcnschool.com">BCN School</a>.</strong>
+        </footer>
+
+        </div>
+        </div>
+</body>
+</html>

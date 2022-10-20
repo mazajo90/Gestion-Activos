@@ -1,0 +1,66 @@
+{% extends 'layout/base.html' %}
+{% load static %}{% block title %}Listado{% endblock %}{% include 'layout/scripts.html' %}{% include 'layout/navbar.html'%}
+{% block listWare %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-3">
+          <div class="col-sm-6">
+            <h1>Notebook Disponibles</h1>
+          </div>
+          <div class="col-sm-3">
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>  
+    {% include 'catastro_equipos/search_notebook.html' %}
+     
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Productos Disponibles</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>Marca Producto</th>
+                        <th>Modelo de Producto</th>
+                        <th>Codigo Activo</th>
+                        <th>Direccion Mac</th>
+                        <th>Serial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if object_list %}
+                  {% for product in object_list|dictsort:"pk" reversed %} 
+                      <tr class="text-center">
+                        <td>{{ product.product_name  }}</td>
+                        <td>{{ product.model_product}}</td>
+                        <td>{{ product.active_code }}</td>
+                        <td>{{ product.mac_address  }}</td>
+                        <td>{{ product.serial }}</td>
+                      </tr>
+                      {% endfor %}
+                      {% else %}
+                        <div class="text-center">
+                        <h1>No existen Productos registrados en Bodega</h1>
+                    </div>
+                    {% endif %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'layout/paginate.html' %}
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

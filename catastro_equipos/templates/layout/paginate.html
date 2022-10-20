@@ -1,0 +1,65 @@
+{% load static %}
+{% if paginator.num_pages > 1%}
+<div class="d-flex justify-content-center">
+    <ul class="pagination">
+        {% if entity.has_previous %}
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="?page={{ entity.previous_page_number }}#pagtable">Anterior</a></li>
+        {% endif %}
+        {% if page_obj.has_previous %}
+          <li class="paginate_button page-item previous" id="example2_previous">
+              <a href="?page={{ page_obj.previous_page_number }}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
+          </li>
+          {% else %}
+          <li class="paginate_button page-item previous disabled" id="example2_previous">
+            <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
+        </li>
+        {% endif %}
+        {% for page in paginator.page_range %}
+            {% if forloop.last and page != entity.number and paginator.num_pages > 4 %} 
+                {% if entity.next_page_number != paginator.num_pages%}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ entity.number | add:1}} {{page}} ">...</a>  
+                </li>
+                {% endif %}
+            <li class="page-item">
+                    <a class="page-link" href="?page={{paginator.num_pages}}">{{paginator.num_pages}}</a>
+            </li>
+            {% endif %}
+            {% if page == entity.number and page > 4 %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page | add:-1 }}">...</a>
+            </li>    
+            {% endif %}
+            {% if page < 5 or page == entity.number %}
+            <li class="page-item {% if page == entity.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="paginate_button page-item next" id="example2_previous">
+              <a href="?page={{ page_obj.next_page_number }}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Siguiente</a>
+            </li>
+        {% else %}
+          <li class="paginate_button page-item next disabled" id="example2_previous">
+              <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Siguiente</a>
+          </li>
+        {% endif %}
+        {% if entity.has_next %}
+            <li class="page-item d-none d-sm-block">
+                <a class="page-link" href="?page={{ entity.next_page_number }}#pagtable">Siguiente</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+<div class="d-flex justify-content-center d-sm-none">            
+    {% if entity.has_previous %}
+        <span class="page-item"><a  class="page-link" href="?page={{ entity.previous_page_number }}#pagtable">Anterior</a></span>
+    {% endif %}
+    {% if entity.has_next %}
+        <span class="page-item"><a class="page-link" href="?page={{ entity.next_page_number }}#pagtable">Siguiente</a></span>
+    {% endif %}
+    <br>
+    <br>
+</div>
+{% endif %}
