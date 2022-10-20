@@ -26,9 +26,9 @@ def validate_password(value):
         raise ValidationError('La contraseña debe tener un minimo de 10 caracteres')  
 
 def validate_email(value):
-    if "@bcnschool.cl" in value:
+    if "@test.cl" in value:
         return value
-    elif "@sabantis.com" in value:
+    elif "@test.com" in value:
         return value
     else:
         raise ValidationError('Email inválido, por favor ingrese email corporación')      
@@ -61,13 +61,13 @@ AREA = [
 class Infraestructure(models.Model):
     #id_ssh_user     = models.AutoField(primary_key=True, null=False, default=None, verbose_name="id")
     user_ssh        = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False,verbose_name='Colaborador')
-    user_email      = models.EmailField(max_length=100, default='@bcnschool.cl' , verbose_name='Email', validators=[validate_email])
+    user_email      = models.EmailField(max_length=100, default='@test.com' , verbose_name='Email', validators=[validate_email])
     user_area       = models.CharField(max_length=5, choices=AREA, null=False, default=None, verbose_name="Area") 
     sub_area        = models.CharField(max_length=100, choices=SUB_AREA, null=False, verbose_name="Sub Area")
     job_area        = models.CharField(max_length=100, choices=JOBS_AREA, null=False, verbose_name="Cargo")
     ssh_user        = models.CharField(max_length=255, validators=[validate_user_name], unique=True, verbose_name="Usuario")
-    ssh_key         = models.CharField(max_length=100, validators=[validate_user_ssh], unique=True, default='Private_Key_AWS_', verbose_name="Nombre de llave ssh")
-    ssh_password    = models.CharField(max_length=100, validators=[validate_password], unique=True, default='//BCN-V1.', verbose_name="Contraseña")
+    ssh_key         = models.CharField(max_length=100, validators=[validate_user_ssh], unique=True, default='', verbose_name="Nombre de llave ssh")
+    ssh_password    = models.CharField(max_length=100, validators=[validate_password], unique=True, default='', verbose_name="Contraseña")
     created         = models.DateField(default=datetime.now, verbose_name="Fecha de Creación") 
     active_ssh_user = models.BooleanField(default=True, verbose_name="Usuario Activo")
 

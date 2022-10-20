@@ -15,9 +15,9 @@ def about_upload_to(instance, filename):
     return 'media/perfil' + filename  
 
 def validate_email(value):
-    if "@bcnschool.cl" in value:
+    if "@test.cl" in value:
         return value
-    elif "@sabantis.com" in value:
+    elif "@test.com" in value:
         return value
     else:
         raise ValidationError('Email inválido, por favor ingrese email corporación')
@@ -51,7 +51,7 @@ class User(models.Model):
     id_user = models.AutoField(primary_key=True, null=False, default=None, verbose_name='ID Colaborador')
     user_name = models.CharField(max_length=100, verbose_name='Nombre', validators=[validate_user_name])
     user_last_name = models.CharField(max_length=100, verbose_name='Apellido', validators=[validate_user_last_name])
-    user_email = models.EmailField(max_length=100, default='@bcnschool.cl' , verbose_name='Email', validators=[validate_email])
+    user_email = models.EmailField(max_length=100, default='@test.com' , verbose_name='Email', validators=[validate_email])
     user_phone = models.IntegerField(null=False, blank=False, unique=True, verbose_name='Numero de Telefono')
     user_name_corp = models.CharField(max_length=100, unique=True, verbose_name='Nombre corporativo', validators=[validate_user_name_corp])
     user_corp = models.CharField(max_length=100,  choices=COMPANIES, blank=False, null=False, default='Escuela de Negocios BCN School SPA',verbose_name='Empresa')
